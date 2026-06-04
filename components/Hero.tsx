@@ -47,21 +47,16 @@ export function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       <video
-        className="absolute inset-0 hidden h-full w-full object-cover md:block"
+        className="absolute inset-0 h-full w-full object-cover"
         autoPlay
         muted
         loop
         playsInline
+        poster="/hero-bg.jpg"
         aria-hidden
       >
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
-
-      <div
-        className="absolute inset-0 bg-cover bg-center md:hidden"
-        style={{ backgroundImage: "url(/hero-bg.jpg)" }}
-        aria-hidden
-      />
 
       <div className="absolute inset-0 bg-black/55" aria-hidden />
 
