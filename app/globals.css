@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0d0d0d;
+  --bg-footer: #0a0a0a;
+  --gold: #c9a84c;
+  --gold-light: #f0d060;
+  --text: #ffffff;
+  --text-muted: #a0a0a0;
+  --card: #1a1a1a;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-footer: var(--bg-footer);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-card: var(--card);
+  --font-heading: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-montserrat), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #c9a84c 0%, #f0d060 100%);
+}
+
+.gold-btn {
+  background: linear-gradient(135deg, #c9a84c 0%, #f0d060 100%);
+  color: #000000;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.gold-btn:hover {
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.6), 0 0 40px rgba(240, 208, 96, 0.3);
+}
+
+.gold-card {
+  background: var(--card);
+  border: 1px solid var(--gold);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #c9a84c 20%,
+    #f0d060 50%,
+    #c9a84c 80%,
+    transparent 100%
+  );
+}
+
+.map-dark {
+  background: #0d0d0d;
+  position: relative;
+}
+
+.map-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 13, 0.15) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(13, 13, 13, 0.2) 100%
+  );
+}
+
+.map-dark iframe {
+  display: block;
+  filter: invert(1) hue-rotate(180deg) saturate(0.75) brightness(0.8) contrast(1.1);
+}
