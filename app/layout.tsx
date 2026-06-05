@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Playfair_Display } from "next/font/google";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk" className={`${playfair.variable} ${montserrat.variable}`}>
-      <body className="min-h-screen bg-bg font-body antialiased">{children}</body>
+      <body className="min-h-screen bg-bg font-body antialiased">
+        <ScrollToTop />
+        {children}
+      </body>
     </html>
   );
 }

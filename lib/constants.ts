@@ -27,7 +27,7 @@ export const ADDRESSES = {
   vinnytsia: "м. Вінниця, просп. Космонавтів 53",
 } as const;
 
-export const INSTAGRAM_URL = "https://www.instagram.com/starfamily/";
+export const INSTAGRAM_URL = "https://www.instagram.com/starfamilyua/";
 
 export const MAPS = {
   kyiv: "https://maps.google.com/maps?q=%D0%B2%D1%83%D0%BB.+%D0%90%D0%BD%D0%BD%D0%B8+%D0%90%D1%85%D0%BC%D0%B0%D1%82%D0%BE%D0%B2%D0%BE%D1%97+44%D0%B0,+%D0%9A%D0%B8%D1%97%D0%B2&hl=uk&z=16&output=embed",

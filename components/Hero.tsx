@@ -45,7 +45,10 @@ export function Hero() {
   }, [phonesOpen]);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden"
+    >
       <video
         className="absolute inset-0 h-full w-full object-cover"
         autoPlay
