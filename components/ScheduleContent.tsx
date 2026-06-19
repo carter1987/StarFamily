@@ -38,9 +38,14 @@ function ScheduleGrid({ schedules }: { schedules: DaySchedule[] }) {
         <table className="w-full min-w-[640px] text-left text-sm md:text-base">
           <thead>
             <tr className="border-b border-gold/40 bg-gold/10">
-              <th className="px-3 py-4 font-semibold text-gold-light md:px-4">Час</th>
+              <th className="whitespace-nowrap px-3 py-4 font-semibold text-gold-light md:px-4">
+                Час
+              </th>
               {CLASS_COLUMNS.map((col) => (
-                <th key={col} className="px-3 py-4 font-semibold text-gold-light md:px-4">
+                <th
+                  key={col}
+                  className="whitespace-nowrap px-3 py-4 font-semibold text-gold-light md:px-4"
+                >
                   {col}
                 </th>
               ))}
@@ -53,7 +58,10 @@ function ScheduleGrid({ schedules }: { schedules: DaySchedule[] }) {
                   {row.time}
                 </td>
                 {row.classes.map((cls, i) => (
-                  <td key={`${row.time}-${i}`} className="px-3 py-3 text-text md:px-4">
+                  <td
+                    key={`${row.time}-${i}`}
+                    className="whitespace-nowrap px-3 py-3 text-text md:px-4"
+                  >
                     {cls}
                   </td>
                 ))}
