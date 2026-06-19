@@ -1,12 +1,20 @@
 [
   {
     "type": "photo",
-    "src": "/gallery/photo1.jpg",
-    "description": "Опис фото"
+    "src": "/gallery/photo/lviv/foto1.jpg",
+    "description": "Нагородження переможців",
+    "category": "Львів"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/lviv/foto2.jpg",
+    "description": "Король Аліса",
+    "category": "Львів"
   },
   {
     "type": "video",
     "youtubeId": "dQw4w9WgXcQ",
-    "description": "Опис відео"
+    "description": "Опис відео",
+    "category": "Відео"
   }
 ]
