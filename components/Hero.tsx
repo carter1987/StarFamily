@@ -5,13 +5,13 @@ import { useEffect, useRef, useState } from "react";
 import { GoldButton } from "@/components/ui/GoldButton";
 import { PHONE_CONTACTS, phoneTelHref } from "@/lib/constants";
 
-function PhoneIcon() {
+function PhoneIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      className="h-5 w-5 shrink-0 text-gold"
+      className={`shrink-0 text-gold ${className}`}
       aria-hidden
     >
       <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
@@ -93,36 +93,31 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
-                className="gold-card absolute left-1/2 top-full z-20 mt-3 flex max-h-[60vh] w-[min(100vw-2rem,360px)] -translate-x-1/2 flex-col overflow-hidden rounded-lg text-left shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                className="gold-card absolute left-1/2 top-full z-20 mt-2 w-[min(100vw-2rem,340px)] -translate-x-1/2 overflow-hidden rounded-lg text-left text-[13px] shadow-[0_8px_32px_rgba(0,0,0,0.5)] md:mt-3 md:w-[min(100vw-2rem,360px)] md:text-base"
                 role="menu"
               >
-                <p className="shrink-0 border-b border-gold/30 px-4 py-3 text-center text-xs font-medium uppercase tracking-wider text-text-muted">
+                <p className="border-b border-gold/30 px-3 py-2 text-center text-[11px] font-medium uppercase tracking-wider text-text-muted md:px-4 md:py-3 md:text-xs">
                   Оберіть номер
                 </p>
-                <div className="overflow-y-auto">
-                {PHONE_CONTACTS.map(({ city, contacts }) => (
-                  <div key={city}>
-                    <p className="bg-gold/5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gold-light">
-                      {city}
-                    </p>
-                    {contacts.map(({ name, phone }) => (
-                      <a
-                        key={`${city}-${name}-${phone}`}
-                        href={phoneTelHref(phone)}
-                        role="menuitem"
-                        className="flex items-center gap-3 border-b border-gold/20 px-4 py-4 transition-colors last:border-b-0 hover:bg-gold/10"
-                        onClick={() => setPhonesOpen(false)}
-                      >
-                        <PhoneIcon />
-                        <span className="flex flex-col gap-0.5">
-                          <span className="text-sm font-semibold text-gold-light">{name}</span>
-                          <span className="text-base text-text">{phone}</span>
+                {PHONE_CONTACTS.flatMap(({ city, contacts }) =>
+                  contacts.map(({ name, phone }) => (
+                    <a
+                      key={`${city}-${name}-${phone}`}
+                      href={phoneTelHref(phone)}
+                      role="menuitem"
+                      className="flex items-center gap-2 border-b border-gold/20 px-3 py-2.5 transition-colors last:border-b-0 hover:bg-gold/10 md:gap-3 md:px-4 md:py-4"
+                      onClick={() => setPhonesOpen(false)}
+                    >
+                      <PhoneIcon className="h-3.5 w-3.5 md:h-5 md:w-5" />
+                      <span className="flex min-w-0 flex-col gap-0">
+                        <span className="font-semibold leading-tight text-gold-light">
+                          {city}: {name}
                         </span>
-                      </a>
-                    ))}
-                  </div>
-                ))}
-                </div>
+                        <span className="leading-tight text-text">{phone}</span>
+                      </span>
+                    </a>
+                  )),
+                )}
               </motion.div>
             )}
           </AnimatePresence>

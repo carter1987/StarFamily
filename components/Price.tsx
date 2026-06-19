@@ -7,14 +7,16 @@ import {
   VINNYTSIA_PRICES,
 } from "@/lib/data/price";
 
+const MOBILE_SERVICE_NAME = "text-sm leading-snug text-text";
+
 function KyivPriceTable() {
   return (
     <>
       <div className="space-y-3 md:hidden">
         {KYIV_PRICES.map((row) => (
           <div key={row.service} className="gold-card rounded-lg p-4">
-            <p className="text-sm leading-relaxed text-text">{row.service}</p>
-            <p className="mt-2 font-semibold text-gold-light">{row.price}</p>
+            <p className={MOBILE_SERVICE_NAME}>{row.service}</p>
+            <p className="mt-2 text-sm font-semibold text-gold-light">{row.price}</p>
           </div>
         ))}
       </div>
@@ -49,7 +51,7 @@ function VinnytsiaPriceTable() {
       <div className="space-y-3 md:hidden">
         {VINNYTSIA_PRICES.map((row) => (
           <div key={row.service} className="gold-card rounded-lg p-4">
-            <p className="text-sm leading-relaxed text-text">{row.service}</p>
+            <p className={MOBILE_SERVICE_NAME}>{row.service}</p>
             <p className="mt-2 text-sm">
               {row.oldPrice && (
                 <>
@@ -57,7 +59,7 @@ function VinnytsiaPriceTable() {
                   <span className="mx-2 text-text-muted">→</span>
                 </>
               )}
-              <span className="font-bold text-gold">{row.newPrice}</span>
+              <span className="font-semibold text-gold-light">{row.newPrice}</span>
             </p>
           </div>
         ))}
@@ -79,7 +81,7 @@ function VinnytsiaPriceTable() {
                 <td className="whitespace-nowrap px-4 py-3 text-text-muted line-through md:px-6">
                   {row.oldPrice ?? ""}
                 </td>
-                <td className="whitespace-nowrap px-4 py-3 font-bold text-gold md:px-6">
+                <td className="whitespace-nowrap px-4 py-3 font-semibold text-gold-light md:px-6">
                   {row.newPrice}
                 </td>
               </tr>
