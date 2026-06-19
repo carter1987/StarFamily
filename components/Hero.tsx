@@ -93,12 +93,13 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
-                className="gold-card absolute left-1/2 top-full z-20 mt-3 w-[min(100vw-2rem,360px)] -translate-x-1/2 overflow-hidden rounded-lg text-left shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                className="gold-card absolute left-1/2 top-full z-20 mt-3 flex max-h-[60vh] w-[min(100vw-2rem,360px)] -translate-x-1/2 flex-col overflow-hidden rounded-lg text-left shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
                 role="menu"
               >
-                <p className="border-b border-gold/30 px-4 py-3 text-center text-xs font-medium uppercase tracking-wider text-text-muted">
+                <p className="shrink-0 border-b border-gold/30 px-4 py-3 text-center text-xs font-medium uppercase tracking-wider text-text-muted">
                   Оберіть номер
                 </p>
+                <div className="overflow-y-auto">
                 {PHONE_CONTACTS.map(({ city, contacts }) => (
                   <div key={city}>
                     <p className="bg-gold/5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gold-light">
@@ -121,6 +122,7 @@ export function Hero() {
                     ))}
                   </div>
                 ))}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

@@ -9,33 +9,61 @@ import {
 
 function KyivPriceTable() {
   return (
-    <div className="gold-card overflow-x-auto rounded-lg">
-      <table className="w-full min-w-[320px] text-left text-sm md:text-base">
-        <thead>
-          <tr className="border-b border-gold/40 bg-gold/10">
-            <th className="px-4 py-4 font-semibold text-gold-light md:px-6">Послуга</th>
-            <th className="px-4 py-4 font-semibold text-gold-light md:px-6">Ціна</th>
-          </tr>
-        </thead>
-        <tbody>
-          {KYIV_PRICES.map((row) => (
-            <tr key={row.service} className="border-b border-gold/10 last:border-b-0">
-              <td className="px-4 py-3 text-text md:px-6">{row.service}</td>
-              <td className="whitespace-nowrap px-4 py-3 font-semibold text-gold-light md:px-6">
-                {row.price}
-              </td>
+    <>
+      <div className="space-y-3 md:hidden">
+        {KYIV_PRICES.map((row) => (
+          <div key={row.service} className="gold-card rounded-lg p-4">
+            <p className="text-sm leading-relaxed text-text">{row.service}</p>
+            <p className="mt-2 font-semibold text-gold-light">{row.price}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="gold-card hidden overflow-x-auto rounded-lg md:block">
+        <table className="w-full min-w-[320px] text-left text-sm md:text-base">
+          <thead>
+            <tr className="border-b border-gold/40 bg-gold/10">
+              <th className="px-4 py-4 font-semibold text-gold-light md:px-6">Послуга</th>
+              <th className="px-4 py-4 font-semibold text-gold-light md:px-6">Ціна</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {KYIV_PRICES.map((row) => (
+              <tr key={row.service} className="border-b border-gold/10 last:border-b-0">
+                <td className="px-4 py-3 text-text md:px-6">{row.service}</td>
+                <td className="whitespace-nowrap px-4 py-3 font-semibold text-gold-light md:px-6">
+                  {row.price}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 
 function VinnytsiaPriceTable() {
   return (
     <div>
-      <div className="gold-card overflow-x-auto rounded-lg">
+      <div className="space-y-3 md:hidden">
+        {VINNYTSIA_PRICES.map((row) => (
+          <div key={row.service} className="gold-card rounded-lg p-4">
+            <p className="text-sm leading-relaxed text-text">{row.service}</p>
+            <p className="mt-2 text-sm">
+              {row.oldPrice && (
+                <>
+                  <span className="text-text-muted line-through">{row.oldPrice}</span>
+                  <span className="mx-2 text-text-muted">→</span>
+                </>
+              )}
+              <span className="font-bold text-gold">{row.newPrice}</span>
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="gold-card hidden overflow-x-auto rounded-lg md:block">
         <table className="w-full min-w-[480px] text-left text-sm md:text-base">
           <thead>
             <tr className="border-b border-gold/40 bg-gold/10">
@@ -59,6 +87,7 @@ function VinnytsiaPriceTable() {
           </tbody>
         </table>
       </div>
+
       <p className="mt-4 text-center text-sm leading-relaxed text-text-muted md:text-base">
         {VINNYTSIA_PRICE_NOTE}
       </p>
