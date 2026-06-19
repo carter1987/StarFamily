@@ -33,7 +33,7 @@ export function Footer() {
               className="inline-flex items-center gap-2 text-gold transition-colors hover:text-gold-light"
             >
               <InstagramIcon />
-              Instagram
+              Інстаграм
             </Link>
           </div>
         </div>

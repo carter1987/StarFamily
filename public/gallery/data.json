@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "type": "photo",
+    "src": "/gallery/photo1.jpg",
+    "description": "Опис фото"
+  },
+  {
+    "type": "video",
+    "youtubeId": "dQw4w9WgXcQ",
+    "description": "Опис відео"
+  }
+]

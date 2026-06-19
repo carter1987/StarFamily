@@ -8,14 +8,18 @@ export const NAV_ITEMS = [
   { label: "Співпраця", href: "#spivpratsya" },
 ] as const;
 
-export const PHONES = {
-  kyiv: "+38 (0XX) XXX-XX-XX",
-  vinnytsia: "+38 (0XX) XXX-XX-XX",
-} as const;
-
-export const PHONE_OPTIONS = [
-  { city: "Київ", phone: PHONES.kyiv },
-  { city: "Вінниця", phone: PHONES.vinnytsia },
+export const PHONE_CONTACTS = [
+  {
+    city: "Київ",
+    contacts: [{ name: "Анна", phone: "+380 (97) 481 29 50" }],
+  },
+  {
+    city: "Вінниця",
+    contacts: [
+      { name: "Анна", phone: "+380 (93) 630 47 05" },
+      { name: "Леся", phone: "+380 (68) 988 08 16" },
+    ],
+  },
 ] as const;
 
 export function phoneTelHref(phone: string) {

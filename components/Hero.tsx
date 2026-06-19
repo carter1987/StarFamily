@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { GoldButton } from "@/components/ui/GoldButton";
-import { PHONE_OPTIONS, phoneTelHref } from "@/lib/constants";
+import { PHONE_CONTACTS, phoneTelHref } from "@/lib/constants";
 
 function PhoneIcon() {
   return (
@@ -93,26 +93,33 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
-                className="gold-card absolute left-1/2 top-full z-20 mt-3 w-[min(100vw-2rem,320px)] -translate-x-1/2 overflow-hidden rounded-lg text-left shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                className="gold-card absolute left-1/2 top-full z-20 mt-3 w-[min(100vw-2rem,360px)] -translate-x-1/2 overflow-hidden rounded-lg text-left shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
                 role="menu"
               >
                 <p className="border-b border-gold/30 px-4 py-3 text-center text-xs font-medium uppercase tracking-wider text-text-muted">
-                  Оберіть місто
+                  Оберіть номер
                 </p>
-                {PHONE_OPTIONS.map(({ city, phone }) => (
-                  <a
-                    key={city}
-                    href={phoneTelHref(phone)}
-                    role="menuitem"
-                    className="flex items-center gap-3 border-b border-gold/20 px-4 py-4 transition-colors last:border-b-0 hover:bg-gold/10"
-                    onClick={() => setPhonesOpen(false)}
-                  >
-                    <PhoneIcon />
-                    <span className="flex flex-col gap-0.5">
-                      <span className="text-sm font-semibold text-gold-light">{city}</span>
-                      <span className="text-base text-text">{phone}</span>
-                    </span>
-                  </a>
+                {PHONE_CONTACTS.map(({ city, contacts }) => (
+                  <div key={city}>
+                    <p className="bg-gold/5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gold-light">
+                      {city}
+                    </p>
+                    {contacts.map(({ name, phone }) => (
+                      <a
+                        key={`${city}-${name}-${phone}`}
+                        href={phoneTelHref(phone)}
+                        role="menuitem"
+                        className="flex items-center gap-3 border-b border-gold/20 px-4 py-4 transition-colors last:border-b-0 hover:bg-gold/10"
+                        onClick={() => setPhonesOpen(false)}
+                      >
+                        <PhoneIcon />
+                        <span className="flex flex-col gap-0.5">
+                          <span className="text-sm font-semibold text-gold-light">{name}</span>
+                          <span className="text-base text-text">{phone}</span>
+                        </span>
+                      </a>
+                    ))}
+                  </div>
                 ))}
               </motion.div>
             )}

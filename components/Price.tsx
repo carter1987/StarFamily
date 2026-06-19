@@ -1,25 +1,67 @@
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { CityTabs } from "@/components/ui/CityTabs";
 import { Section } from "@/components/ui/Section";
+import {
+  KYIV_PRICES,
+  VINNYTSIA_PRICE_NOTE,
+  VINNYTSIA_PRICES,
+} from "@/lib/data/price";
 
-function PriceTable({ city }: { city: string }) {
+function KyivPriceTable() {
   return (
-    <div className="gold-card overflow-hidden rounded-lg">
-      <table className="w-full text-left text-sm md:text-base">
+    <div className="gold-card overflow-x-auto rounded-lg">
+      <table className="w-full min-w-[320px] text-left text-sm md:text-base">
         <thead>
           <tr className="border-b border-gold/40 bg-gold/10">
-            <th className="px-4 py-4 font-semibold text-gold-light md:px-6">Напрямок</th>
+            <th className="px-4 py-4 font-semibold text-gold-light md:px-6">Послуга</th>
             <th className="px-4 py-4 font-semibold text-gold-light md:px-6">Ціна</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td colSpan={2} className="px-4 py-8 text-center text-text-muted md:px-6">
-              Прайс для {city} — незабаром буде додано
-            </td>
-          </tr>
+          {KYIV_PRICES.map((row) => (
+            <tr key={row.service} className="border-b border-gold/10 last:border-b-0">
+              <td className="px-4 py-3 text-text md:px-6">{row.service}</td>
+              <td className="whitespace-nowrap px-4 py-3 font-semibold text-gold-light md:px-6">
+                {row.price}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+function VinnytsiaPriceTable() {
+  return (
+    <div>
+      <div className="gold-card overflow-x-auto rounded-lg">
+        <table className="w-full min-w-[480px] text-left text-sm md:text-base">
+          <thead>
+            <tr className="border-b border-gold/40 bg-gold/10">
+              <th className="px-4 py-4 font-semibold text-gold-light md:px-6">Послуга</th>
+              <th className="px-4 py-4 font-semibold text-gold-light md:px-6">Стара ціна</th>
+              <th className="px-4 py-4 font-semibold text-gold-light md:px-6">Нова ціна</th>
+            </tr>
+          </thead>
+          <tbody>
+            {VINNYTSIA_PRICES.map((row) => (
+              <tr key={row.service} className="border-b border-gold/10 last:border-b-0">
+                <td className="px-4 py-3 text-text md:px-6">{row.service}</td>
+                <td className="whitespace-nowrap px-4 py-3 text-text-muted line-through md:px-6">
+                  {row.oldPrice ?? ""}
+                </td>
+                <td className="whitespace-nowrap px-4 py-3 font-bold text-gold md:px-6">
+                  {row.newPrice}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-4 text-center text-sm leading-relaxed text-text-muted md:text-base">
+        {VINNYTSIA_PRICE_NOTE}
+      </p>
     </div>
   );
 }
@@ -29,8 +71,8 @@ export function Price() {
     <Section id="prais" title="Прайс">
       <AnimatedSection>
         <CityTabs
-          kyivContent={<PriceTable city="Києва" />}
-          vinnytsiaContent={<PriceTable city="Вінниці" />}
+          kyivContent={<KyivPriceTable />}
+          vinnytsiaContent={<VinnytsiaPriceTable />}
         />
       </AnimatedSection>
     </Section>
