@@ -33,6 +33,8 @@ export const ADDRESSES = {
 
 export const INSTAGRAM_URL = "https://www.instagram.com/starfamilyua/";
 
+export const TIKTOK_URL = "https://www.tiktok.com/@starfamilyua?_r=1";
+
 export const TELEGRAM_URLS = {
   kyiv: "https://t.me/+9NnMRHXhnNAxYjRi",
   vinnytsia: "https://t.me/+STZrOYFDItVhYjky",
