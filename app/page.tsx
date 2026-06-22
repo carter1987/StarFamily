@@ -9,7 +9,7 @@ import { Hero } from "@/components/Hero";
 import { Price } from "@/components/Price";
 import { Schedule } from "@/components/Schedule";
 import { Team } from "@/components/Team";
-import type { GalleryItem } from "@/lib/types";
+import type { EventItem, GalleryItem } from "@/lib/types";
 import { readFile } from "fs/promises";
 import path from "path";
 
@@ -23,8 +23,18 @@ async function getGalleryItems(): Promise<GalleryItem[]> {
   }
 }
 
+async function getEvents(): Promise<EventItem[]> {
+  try {
+    const filePath = path.join(process.cwd(), "public", "events", "data.json");
+    const raw = await readFile(filePath, "utf-8");
+    return JSON.parse(raw) as EventItem[];
+  } catch {
+    return [];
+  }
+}
+
 export default async function Home() {
-  const galleryItems = await getGalleryItems();
+  const [galleryItems, events] = await Promise.all([getGalleryItems(), getEvents()]);
 
   return (
     <>
@@ -33,7 +43,7 @@ export default async function Home() {
         <Hero />
         <About />
         <Team />
-        <Events />
+        <Events events={events} />
         <Gallery items={galleryItems} />
         <Schedule />
         <Price />

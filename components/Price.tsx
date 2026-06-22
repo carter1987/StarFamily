@@ -3,7 +3,6 @@ import { CityTabs } from "@/components/ui/CityTabs";
 import { Section } from "@/components/ui/Section";
 import {
   KYIV_PRICES,
-  VINNYTSIA_PRICE_NOTE,
   VINNYTSIA_PRICES,
 } from "@/lib/data/price";
 
@@ -89,10 +88,6 @@ function VinnytsiaPriceTable() {
           </tbody>
         </table>
       </div>
-
-      <p className="mt-4 text-center text-sm leading-relaxed text-text-muted md:text-base">
-        {VINNYTSIA_PRICE_NOTE}
-      </p>
     </div>
   );
 }

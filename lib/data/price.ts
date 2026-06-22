@@ -29,10 +29,4 @@ export const VINNYTSIA_PRICES: VinnytsiaPriceRow[] = [
   { service: "Індивідуальне дует", newPrice: "800₴" },
   { service: "Абонемент 8 занять соло", newPrice: "4000₴" },
   { service: "Абонемент 8 занять дует", newPrice: "6000₴" },
-  { service: "Дитячий Кураж — 1 день", newPrice: "500₴" },
-  { service: "Дитячий Кураж — 3 дні", newPrice: "1400₴" },
-  { service: "Дитячий Кураж — абонемент місяць (20 днів)", newPrice: "8000₴" },
 ];
-
-export const VINNYTSIA_PRICE_NOTE =
-  "Дитячий Кураж — місце де дитина може провести час весело та корисно під час літніх канікул. Кожного дня з понеділка по п'ятницю з 10:00 до 14:00";

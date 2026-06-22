@@ -1,0 +1,14 @@
+[
+  {
+    "id": "event1",
+    "date": "2026-06-15",
+    "title": "Поїздка у Львів",
+    "description": "На шляху до Львова ми зупинились у чудовому парку, де з радістю та натхненням провели час разом. А вже на виступі у Львові наші вихованці показали все на що здатні — і зайняли всі призові місця! Пишаємось кожним з них 🌟",
+    "photos": [
+      "/events/photos/lviv/foto1.jpeg",
+      "/events/photos/lviv/foto2.jpeg",
+      "/events/photos/lviv/foto3.jpeg",
+      "/events/photos/lviv/foto4.jpeg"
+    ]
+  }
+]

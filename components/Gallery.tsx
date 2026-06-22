@@ -5,11 +5,15 @@ import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Section } from "@/components/ui/Section";
-import { galleryItemKey, getGalleryCategories, type GalleryItem } from "@/lib/types";
+import { galleryItemKey, type GalleryItem } from "@/lib/types";
 
 type GalleryProps = {
   items: GalleryItem[];
 };
+
+type GalleryFilter = "Фото" | "Відео";
+
+const GALLERY_FILTERS: GalleryFilter[] = ["Фото", "Відео"];
 
 function getThumbnail(item: GalleryItem) {
   if (item.type === "photo") return item.src;
@@ -17,17 +21,16 @@ function getThumbnail(item: GalleryItem) {
 }
 
 export function Gallery({ items }: GalleryProps) {
-  const categories = useMemo(() => getGalleryCategories(items), [items]);
-  const [activeCategory, setActiveCategory] = useState("Всі");
+  const [activeFilter, setActiveFilter] = useState<GalleryFilter>("Фото");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const touchStartX = useRef<number | null>(null);
 
   const filteredItems = useMemo(
     () =>
-      activeCategory === "Всі"
-        ? items
-        : items.filter((item) => item.category === activeCategory),
-    [items, activeCategory],
+      items.filter((item) =>
+        activeFilter === "Фото" ? item.type === "photo" : item.type === "video",
+      ),
+    [items, activeFilter],
   );
 
   const lightboxItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
@@ -50,7 +53,7 @@ export function Gallery({ items }: GalleryProps) {
 
   useEffect(() => {
     setLightboxIndex(null);
-  }, [activeCategory]);
+  }, [activeFilter]);
 
   useEffect(() => {
     if (lightboxIndex === null) return;
@@ -95,26 +98,28 @@ export function Gallery({ items }: GalleryProps) {
         </AnimatedSection>
       ) : (
         <>
-          <div className="mb-8 flex flex-wrap justify-center gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setActiveCategory(category)}
-                className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300 md:px-6 md:py-2.5 ${
-                  activeCategory === category
-                    ? "gold-gradient text-black shadow-[0_0_15px_rgba(201,168,76,0.4)]"
-                    : "border border-gold/50 text-text-muted hover:border-gold hover:text-text"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+          <div className="scrollbar-hide mb-8 overflow-x-auto">
+            <div className="flex flex-nowrap justify-start gap-2 whitespace-nowrap sm:justify-center">
+              {GALLERY_FILTERS.map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  onClick={() => setActiveFilter(filter)}
+                  className={`shrink-0 rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300 md:px-6 md:py-2.5 ${
+                    activeFilter === filter
+                      ? "gold-gradient text-black shadow-[0_0_15px_rgba(201,168,76,0.4)]"
+                      : "border border-gold/50 text-text-muted hover:border-gold hover:text-text"
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
 
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeCategory}
+              key={activeFilter}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
