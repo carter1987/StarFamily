@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Section } from "@/components/ui/Section";
+import { ShowMoreButton } from "@/components/ui/ShowMoreButton";
 import { galleryItemKey, type GalleryItem } from "@/lib/types";
 
 type GalleryProps = {
@@ -14,6 +15,7 @@ type GalleryProps = {
 type GalleryFilter = "Фото" | "Відео";
 
 const GALLERY_FILTERS: GalleryFilter[] = ["Фото", "Відео"];
+const PAGE_SIZE = 10;
 
 function getThumbnail(item: GalleryItem) {
   if (item.type === "photo") return item.src;
@@ -22,6 +24,7 @@ function getThumbnail(item: GalleryItem) {
 
 export function Gallery({ items }: GalleryProps) {
   const [activeFilter, setActiveFilter] = useState<GalleryFilter>("Фото");
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const touchStartX = useRef<number | null>(null);
 
@@ -32,6 +35,15 @@ export function Gallery({ items }: GalleryProps) {
       ),
     [items, activeFilter],
   );
+
+  const displayedItems = filteredItems.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredItems.length;
+  const canCollapse = !hasMore && filteredItems.length > PAGE_SIZE;
+
+  const collapse = useCallback(() => {
+    setVisibleCount(PAGE_SIZE);
+    document.getElementById("galereya")?.scrollIntoView({ behavior: "smooth" });
+  }, []);
 
   const lightboxItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
 
@@ -53,6 +65,7 @@ export function Gallery({ items }: GalleryProps) {
 
   useEffect(() => {
     setLightboxIndex(null);
+    setVisibleCount(PAGE_SIZE);
   }, [activeFilter]);
 
   useEffect(() => {
@@ -126,7 +139,7 @@ export function Gallery({ items }: GalleryProps) {
               transition={{ duration: 0.3 }}
               className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6"
             >
-              {filteredItems.map((item, i) => (
+              {displayedItems.map((item, i) => (
                 <AnimatedSection key={galleryItemKey(item, i)} delay={(i % 3) * 0.1}>
                   <button
                     type="button"
@@ -156,6 +169,12 @@ export function Gallery({ items }: GalleryProps) {
               ))}
             </motion.div>
           </AnimatePresence>
+
+          {hasMore && (
+            <ShowMoreButton onClick={() => setVisibleCount((count) => count + PAGE_SIZE)} />
+          )}
+
+          {canCollapse && <ShowMoreButton label="Згорнути" onClick={collapse} />}
 
           {filteredItems.length === 0 && (
             <p className="text-center text-text-muted">У цій категорії поки немає матеріалів</p>

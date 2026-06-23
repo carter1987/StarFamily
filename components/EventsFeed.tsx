@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ShowMoreButton } from "@/components/ui/ShowMoreButton";
 import type { EventItem } from "@/lib/types";
 
 type EventsFeedProps = {
@@ -92,7 +93,23 @@ function EventCard({ event, onOpen }: { event: EventItem; onOpen: () => void }) 
 }
 
 export function EventsFeed({ events }: EventsFeedProps) {
-  const grouped = useMemo(() => groupEventsByMonth(events), [events]);
+  const sortedEvents = useMemo(
+    () =>
+      [...events].sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+      ),
+    [events],
+  );
+  const [showAll, setShowAll] = useState(false);
+  const visibleEvents = showAll ? sortedEvents : sortedEvents.slice(0, 5);
+  const hasMoreEvents = sortedEvents.length > 5 && !showAll;
+  const canCollapseEvents = sortedEvents.length > 5 && showAll;
+
+  const collapseEvents = useCallback(() => {
+    setShowAll(false);
+    document.getElementById("podiyi")?.scrollIntoView({ behavior: "smooth" });
+  }, []);
+  const grouped = useMemo(() => groupEventsByMonth(visibleEvents), [visibleEvents]);
   const latestMonth = grouped[0]?.[0] ?? "";
 
   const [expandedMonths, setExpandedMonths] = useState<Set<string>>(
@@ -219,6 +236,10 @@ export function EventsFeed({ events }: EventsFeedProps) {
           );
         })}
       </div>
+
+      {hasMoreEvents && <ShowMoreButton onClick={() => setShowAll(true)} />}
+
+      {canCollapseEvents && <ShowMoreButton label="Згорнути" onClick={collapseEvents} />}
 
       <AnimatePresence>
         {lightbox && currentPhoto && (

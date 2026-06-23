@@ -1,14 +1,266 @@
 [
   {
     "type": "photo",
-    "src": "/gallery/photo/lviv/foto1.jpg",
-    "description": "Нагородження переможців",
+    "src": "/gallery/photo/1.jpg",
+    "description": "",
     "category": "Фото"
   },
   {
     "type": "photo",
-    "src": "/gallery/photo/lviv/foto2.jpg",
-    "description": "Король Аліса",
+    "src": "/gallery/photo/2.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/3.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/4.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/5.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/6.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/7.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/8.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/9.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/10.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/11.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/12.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/13.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/14.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/15.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/16.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/17.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/18.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/19.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/20.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/21.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/22.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/23.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/24.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/25.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/26.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/27.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/28.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/29.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/30.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/31.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/32.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/33.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/34.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/35.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/36.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/37.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/38.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/39.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/40.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/41.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/42.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/43.jpg",
+    "description": "",
+    "category": "Фото"
+  },
+  {
+    "type": "photo",
+    "src": "/gallery/photo/44.jpg",
+    "description": "",
     "category": "Фото"
   },
   {

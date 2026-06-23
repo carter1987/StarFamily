@@ -2,11 +2,13 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
 import { useEffect, useState } from "react";
 import { NAV_ITEMS } from "@/lib/constants";
 
 export function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -33,17 +35,19 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
-        <a
-          href="#"
+        <Link
+          href="/"
           className="shrink-0 bg-transparent"
           onClick={(e) => {
-            e.preventDefault();
             setMenuOpen(false);
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
           }}
         >
           <Logo priority />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV_ITEMS.map((item) => (

@@ -26,3 +26,8 @@ export type EventItem = {
   description: string;
   photos: string[];
 };
+
+export type FormaPhotoItem = {
+  src: string;
+  description: string;
+};

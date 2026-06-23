@@ -1,11 +1,12 @@
 export const NAV_ITEMS = [
-  { label: "Про нас", href: "#pro-nas" },
-  { label: "Події", href: "#podiyi" },
-  { label: "Галерея", href: "#galereya" },
-  { label: "Графік", href: "#grafik" },
-  { label: "Прайс", href: "#prais" },
-  { label: "Гуртки", href: "#hurtky" },
-  { label: "Співпраця", href: "#spivpratsya" },
+  { label: "Про нас", href: "/#pro-nas" },
+  { label: "Події", href: "/#podiyi" },
+  { label: "Галерея", href: "/#galereya" },
+  { label: "Графік", href: "/#grafik" },
+  { label: "Прайс", href: "/#prais" },
+  { label: "Гуртки", href: "/#hurtky" },
+  { label: "Співпраця", href: "/#spivpratsya" },
+  { label: "Star Family Store", href: "/forma" },
 ] as const;
 
 export const PHONE_CONTACTS = [

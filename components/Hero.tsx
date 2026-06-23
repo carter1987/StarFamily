@@ -49,17 +49,18 @@ export function Hero() {
       id="hero"
       className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden"
     >
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/hero-bg.jpg"
-        aria-hidden
-      >
-        <source src="/hero-video.mp4" type="video/mp4" />
-      </video>
+      <div className="absolute inset-0 h-full w-full overflow-hidden" aria-hidden>
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/hero-bg.jpg"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+      </div>
 
       <div className="absolute inset-0 bg-black/55" aria-hidden />
 

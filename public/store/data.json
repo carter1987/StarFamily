@@ -1,0 +1,26 @@
+[
+  {
+    "src": "/store/1.jpg",
+    "description": "Опис фото"
+  },
+  {
+    "src": "/store/2.jpg",
+    "description": "Опис фото"
+  },
+  {
+    "src": "/store/3.jpg",
+    "description": "Опис фото"
+  },
+  {
+    "src": "/store/4.jpg",
+    "description": "Опис фото"
+  },
+  {
+    "src": "/store/5.jpg",
+    "description": "Опис фото"
+  },
+  {
+    "src": "/store/6.jpg",
+    "description": "Опис фото"
+  }
+]
