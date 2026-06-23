@@ -15,7 +15,7 @@ type GalleryProps = {
 type GalleryFilter = "Фото" | "Відео";
 
 const GALLERY_FILTERS: GalleryFilter[] = ["Фото", "Відео"];
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 12;
 
 function getThumbnail(item: GalleryItem) {
   if (item.type === "photo") return item.src;
