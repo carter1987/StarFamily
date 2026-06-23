@@ -6,10 +6,12 @@ import { GoldButton } from "@/components/ui/GoldButton";
 import { Section } from "@/components/ui/Section";
 import {
   FORMA_DESIGN,
+  FORMA_KIT_ITEMS,
   FORMA_MATERIALS,
   FORMA_ORDER_STEPS,
   FORMA_ORDER_URL,
   FORMA_PRODUCTS,
+  FORMA_SIZES,
 } from "@/lib/data/forma";
 import type { FormaPhotoItem } from "@/lib/types";
 import type { Metadata } from "next";
@@ -92,6 +94,67 @@ export default async function FormaPage() {
           <FormaBlock title="Матеріали" items={FORMA_MATERIALS} icon="✔" />
           <FormaBlock title="Дизайн" items={FORMA_DESIGN} icon="✨" />
           <FormaBlock title="Що можна замовити" items={FORMA_PRODUCTS} icon="🖤" />
+
+          <AnimatedSection>
+            <div className="gold-card rounded-lg p-6 md:p-8">
+              <h2 className="font-heading text-2xl text-gold-light md:text-3xl">
+                В комплект входить
+              </h2>
+              <ul className="mt-4 space-y-3">
+                {FORMA_KIT_ITEMS.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-3 text-base leading-relaxed text-text-muted md:text-lg"
+                  >
+                    <span aria-hidden>✔</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <h2 className="mt-8 font-heading text-2xl text-gold-light md:mt-10 md:text-3xl">
+                Розміри
+              </h2>
+
+              <div className="gold-card mt-4 overflow-x-auto rounded-lg">
+                <table className="w-full table-fixed text-left text-xs leading-snug md:text-base md:leading-normal">
+                  <colgroup>
+                    <col className="w-[28%]" />
+                    <col className="w-[36%]" />
+                    <col className="w-[36%]" />
+                  </colgroup>
+                  <thead>
+                    <tr className="border-b border-gold/40 bg-gold/10">
+                      <th className="px-2 py-3 font-semibold text-gold-light md:px-6 md:py-4">
+                        Розмір
+                      </th>
+                      <th className="px-2 py-3 font-semibold text-gold-light md:px-6 md:py-4">
+                        Зріст
+                      </th>
+                      <th className="px-2 py-3 font-semibold text-gold-light md:px-6 md:py-4">
+                        Вік
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {FORMA_SIZES.map((row) => (
+                      <tr key={row.size} className="border-b border-gold/10 last:border-b-0">
+                        <td className="break-words px-2 py-2.5 text-text md:px-6 md:py-3">
+                          {row.size}
+                        </td>
+                        <td className="break-words px-2 py-2.5 text-text md:px-6 md:py-3">
+                          {row.height}
+                        </td>
+                        <td className="break-words px-2 py-2.5 text-text md:px-6 md:py-3">
+                          {row.age}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </AnimatedSection>
 
           <AnimatedSection>
             <div className="gold-card rounded-lg p-6 md:p-8">

@@ -26,6 +26,27 @@ export const FORMA_PRODUCTS = [
   "Подарункові сертифікати",
 ];
 
+export const FORMA_KIT_ITEMS = [
+  "Короткий топ із довгим рукавом та логотипом Star Family",
+  "Шортики",
+  "Матеріал: м'який еластичний велюр (приємний до тіла, добре тягнеться)",
+  "Колір: чорний",
+];
+
+export type FormaSizeRow = {
+  size: string;
+  height: string;
+  age: string;
+};
+
+export const FORMA_SIZES: FormaSizeRow[] = [
+  { size: "XS", height: "98–104 см", age: "3–4 роки" },
+  { size: "S", height: "110–116 см", age: "5–6 років" },
+  { size: "M", height: "122–128 см", age: "7–8 років" },
+  { size: "L", height: "134–140 см", age: "9–10 років" },
+  { size: "Індивідуальний", height: "За мірками", age: "—" },
+];
+
 export const FORMA_ORDER_STEPS = [
   "Оберіть модель та розмір",
   "Залиште заявку в Instagram",

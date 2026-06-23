@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { FormaPhotoItem } from "@/lib/types";
 
@@ -12,22 +12,25 @@ type FormaPhotoGridProps = {
 
 export function FormaPhotoGrid({ photos }: FormaPhotoGridProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const close = useCallback(() => setLightboxIndex(null), []);
+
+  const goPrev = useCallback(() => {
+    setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : i));
+  }, []);
+
+  const goNext = useCallback(() => {
+    setLightboxIndex((i) => (i !== null && i < photos.length - 1 ? i + 1 : i));
+  }, [photos.length]);
 
   useEffect(() => {
     if (lightboxIndex === null) return;
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
-      if (e.key === "ArrowLeft") {
-        setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : i));
-      }
-      if (e.key === "ArrowRight") {
-        setLightboxIndex((i) =>
-          i !== null && i < photos.length - 1 ? i + 1 : i,
-        );
-      }
+      if (e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowRight") goNext();
     };
 
     document.body.style.overflow = "hidden";
@@ -36,7 +39,19 @@ export function FormaPhotoGrid({ photos }: FormaPhotoGridProps) {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
     };
-  }, [lightboxIndex, close, photos.length]);
+  }, [lightboxIndex, close, goPrev, goNext]);
+
+  const onTouchStart = (clientX: number) => {
+    touchStartX.current = clientX;
+  };
+
+  const onTouchEnd = (clientX: number) => {
+    if (touchStartX.current === null) return;
+    const diff = clientX - touchStartX.current;
+    if (diff > 50) goPrev();
+    else if (diff < -50) goNext();
+    touchStartX.current = null;
+  };
 
   const canGoPrev = lightboxIndex !== null && lightboxIndex > 0;
   const canGoNext = lightboxIndex !== null && lightboxIndex < photos.length - 1;
@@ -92,7 +107,7 @@ export function FormaPhotoGrid({ photos }: FormaPhotoGridProps) {
                 className="absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-gold text-lg text-gold transition-colors hover:bg-gold/20 md:left-4 md:h-10 md:w-10 md:text-2xl"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setLightboxIndex((i) => (i !== null ? i - 1 : i));
+                  goPrev();
                 }}
                 aria-label="Попереднє"
               >
@@ -106,7 +121,7 @@ export function FormaPhotoGrid({ photos }: FormaPhotoGridProps) {
                 className="absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-gold text-lg text-gold transition-colors hover:bg-gold/20 md:right-4 md:h-10 md:w-10 md:text-2xl"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setLightboxIndex((i) => (i !== null ? i + 1 : i));
+                  goNext();
                 }}
                 aria-label="Наступне"
               >
@@ -122,6 +137,8 @@ export function FormaPhotoGrid({ photos }: FormaPhotoGridProps) {
               transition={{ duration: 0.2 }}
               className="relative w-full max-w-5xl px-10 md:px-14"
               onClick={(e) => e.stopPropagation()}
+              onTouchStart={(e) => onTouchStart(e.touches[0]?.clientX ?? 0)}
+              onTouchEnd={(e) => onTouchEnd(e.changedTouches[0]?.clientX ?? 0)}
             >
               <Image
                 src={photos[lightboxIndex].src}
