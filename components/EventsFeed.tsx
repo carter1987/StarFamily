@@ -315,9 +315,11 @@ export function EventsFeed({ events }: EventsFeedProps) {
                 className="h-auto w-screen max-w-[100vw] object-contain md:mx-auto md:max-h-[65vh] md:w-auto md:max-w-none rounded-lg"
               />
 
-              <p className="mt-4 px-4 text-center text-base leading-relaxed text-text-muted md:px-0 md:text-lg">
-                {lightbox.event.description}
-              </p>
+              <div className="mt-4 w-full max-w-3xl overflow-y-auto overscroll-y-contain px-4 max-h-[30vh] md:max-h-[22vh] md:px-0">
+                <p className="text-center text-base leading-relaxed text-text-muted md:text-lg">
+                  {lightbox.event.description}
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         )}
