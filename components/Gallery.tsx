@@ -255,7 +255,11 @@ export function Gallery({ items }: GalleryProps) {
                 <div
                   className={`relative mx-auto w-screen max-w-[100vw] overflow-hidden rounded-lg ${
                     lightboxItem.orientation === "vertical" ? "aspect-[9/16]" : "aspect-video"
-                  } md:aspect-auto md:h-[70vh] md:max-h-[506px] md:w-[90vw] md:max-w-[900px]`}
+                  } ${
+                    lightboxItem.orientation === "vertical"
+                      ? "lg:aspect-auto lg:h-[711px] lg:w-[400px] lg:max-w-none"
+                      : "lg:aspect-video lg:h-auto lg:w-[90vw] lg:max-w-[900px]"
+                  }`}
                 >
                   <iframe
                     src={`https://www.youtube.com/embed/${lightboxItem.youtubeId}?autoplay=1`}
