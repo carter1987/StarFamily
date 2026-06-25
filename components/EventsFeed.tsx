@@ -297,12 +297,12 @@ export function EventsFeed({ events }: EventsFeedProps) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="relative flex w-full max-w-[100vw] flex-col items-center justify-center px-0 md:max-w-5xl md:px-14"
+              className="relative flex w-full max-w-[100vw] flex-col items-center overflow-y-auto px-0 pt-12 pb-4 max-md:max-h-[100dvh] md:max-h-none md:justify-center md:overflow-visible md:max-w-5xl md:px-14 md:pt-0 md:pb-0"
               onClick={(e) => e.stopPropagation()}
               onTouchStart={(e) => onTouchStart(e.touches[0]?.clientX ?? 0)}
               onTouchEnd={(e) => onTouchEnd(e.changedTouches[0]?.clientX ?? 0)}
             >
-              <div className="mb-4 px-4 text-center md:px-0">
+              <div className="mb-4 hidden shrink-0 px-4 text-center md:block md:px-0">
                 <p className="text-sm text-gold">{formatEventDate(lightbox.event.date)}</p>
                 <h3 className="mt-1 font-heading text-2xl text-gold-light">{lightbox.event.title}</h3>
               </div>
@@ -312,11 +312,15 @@ export function EventsFeed({ events }: EventsFeedProps) {
                 alt={lightbox.event.title}
                 width={1200}
                 height={800}
-                className="h-auto w-screen max-w-[100vw] object-contain md:mx-auto md:max-h-[65vh] md:w-auto md:max-w-none rounded-lg"
+                className="max-md:order-first shrink-0 max-h-[50vh] w-screen max-w-[100vw] rounded-lg object-contain md:mx-auto md:max-h-[65vh] md:w-auto md:max-w-none"
               />
 
-              <div className="mt-4 w-full max-w-3xl overflow-y-auto overscroll-y-contain px-4 max-h-[30vh] md:max-h-[22vh] md:px-0">
-                <p className="text-center text-base leading-relaxed text-text-muted md:text-lg">
+              <div className="mt-4 flex min-h-0 w-full max-w-3xl flex-1 flex-col overflow-y-auto overscroll-y-contain px-4 max-md:order-last md:mt-4 md:flex-none md:max-h-[22vh] md:px-0">
+                <div className="mb-4 text-center md:hidden">
+                  <p className="text-sm text-gold">{formatEventDate(lightbox.event.date)}</p>
+                  <h3 className="mt-1 font-heading text-2xl text-gold-light">{lightbox.event.title}</h3>
+                </div>
+                <p className="text-center text-base leading-relaxed text-text-muted max-md:mt-0 md:text-lg">
                   {lightbox.event.description}
                 </p>
               </div>
