@@ -188,7 +188,7 @@ export function Gallery({ items }: GalleryProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-0 md:p-4"
             style={{ backgroundColor: "rgba(0,0,0,0.95)" }}
             onClick={close}
             role="dialog"
@@ -238,7 +238,7 @@ export function Gallery({ items }: GalleryProps) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="relative w-full max-w-5xl px-10 md:px-14"
+              className="relative flex w-full max-w-[100vw] flex-col items-center justify-center px-0 md:max-w-5xl md:px-14"
               onClick={(e) => e.stopPropagation()}
               onTouchStart={(e) => onTouchStart(e.touches[0]?.clientX ?? 0)}
               onTouchEnd={(e) => onTouchEnd(e.changedTouches[0]?.clientX ?? 0)}
@@ -249,17 +249,13 @@ export function Gallery({ items }: GalleryProps) {
                   alt={lightboxItem.description}
                   width={1200}
                   height={800}
-                  className="mx-auto max-h-[85vh] w-auto rounded-lg object-contain"
+                  className="h-auto w-screen max-w-[100vw] object-contain md:mx-auto md:max-h-[85vh] md:w-auto md:max-w-none rounded-lg"
                 />
               ) : (
                 <div
-                  className="relative mx-auto overflow-hidden rounded-lg"
-                  style={{
-                    width: "90vw",
-                    maxWidth: "900px",
-                    height: "70vh",
-                    maxHeight: "506px",
-                  }}
+                  className={`relative mx-auto w-screen max-w-[100vw] overflow-hidden rounded-lg ${
+                    lightboxItem.orientation === "vertical" ? "aspect-[9/16]" : "aspect-video"
+                  } md:aspect-auto md:h-[70vh] md:max-h-[506px] md:w-[90vw] md:max-w-[900px]`}
                 >
                   <iframe
                     src={`https://www.youtube.com/embed/${lightboxItem.youtubeId}?autoplay=1`}
@@ -270,7 +266,9 @@ export function Gallery({ items }: GalleryProps) {
                   />
                 </div>
               )}
-              <p className="mt-4 text-center text-lg text-text-muted">{lightboxItem.description}</p>
+              <p className="mt-4 px-4 text-center text-lg text-text-muted md:px-0">
+                {lightboxItem.description}
+              </p>
             </motion.div>
           </motion.div>
         )}

@@ -85,7 +85,7 @@ export function FormaPhotoGrid({ photos }: FormaPhotoGridProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-0 md:p-4"
             style={{ backgroundColor: "rgba(0,0,0,0.95)" }}
             onClick={close}
             role="dialog"
@@ -135,7 +135,7 @@ export function FormaPhotoGrid({ photos }: FormaPhotoGridProps) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="relative w-full max-w-5xl px-10 md:px-14"
+              className="relative flex w-full max-w-[100vw] flex-col items-center justify-center px-0 md:max-w-5xl md:px-14"
               onClick={(e) => e.stopPropagation()}
               onTouchStart={(e) => onTouchStart(e.touches[0]?.clientX ?? 0)}
               onTouchEnd={(e) => onTouchEnd(e.changedTouches[0]?.clientX ?? 0)}
@@ -145,10 +145,10 @@ export function FormaPhotoGrid({ photos }: FormaPhotoGridProps) {
                 alt={photos[lightboxIndex].description || "Форма Star Family"}
                 width={1200}
                 height={800}
-                className="mx-auto max-h-[85vh] w-auto rounded-lg object-contain"
+                className="h-auto w-screen max-w-[100vw] object-contain md:mx-auto md:max-h-[85vh] md:w-auto md:max-w-none rounded-lg"
               />
               {photos[lightboxIndex].description && (
-                <p className="mt-4 text-center text-lg text-text-muted">
+                <p className="mt-4 px-4 text-center text-lg text-text-muted md:px-0">
                   {photos[lightboxIndex].description}
                 </p>
               )}

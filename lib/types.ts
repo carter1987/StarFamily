@@ -10,6 +10,7 @@ export type GalleryVideoItem = {
   youtubeId: string;
   description: string;
   category: string;
+  orientation?: "vertical" | "horizontal";
 };
 
 export type GalleryItem = GalleryPhotoItem | GalleryVideoItem;

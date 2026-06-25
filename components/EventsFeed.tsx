@@ -247,7 +247,7 @@ export function EventsFeed({ events }: EventsFeedProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-0 md:p-4"
             style={{ backgroundColor: "rgba(0,0,0,0.95)" }}
             onClick={close}
             role="dialog"
@@ -297,12 +297,12 @@ export function EventsFeed({ events }: EventsFeedProps) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="relative w-full max-w-5xl px-10 md:px-14"
+              className="relative flex w-full max-w-[100vw] flex-col items-center justify-center px-0 md:max-w-5xl md:px-14"
               onClick={(e) => e.stopPropagation()}
               onTouchStart={(e) => onTouchStart(e.touches[0]?.clientX ?? 0)}
               onTouchEnd={(e) => onTouchEnd(e.changedTouches[0]?.clientX ?? 0)}
             >
-              <div className="mb-4 text-center">
+              <div className="mb-4 px-4 text-center md:px-0">
                 <p className="text-sm text-gold">{formatEventDate(lightbox.event.date)}</p>
                 <h3 className="mt-1 font-heading text-2xl text-gold-light">{lightbox.event.title}</h3>
               </div>
@@ -312,10 +312,10 @@ export function EventsFeed({ events }: EventsFeedProps) {
                 alt={lightbox.event.title}
                 width={1200}
                 height={800}
-                className="mx-auto max-h-[65vh] w-auto rounded-lg object-contain"
+                className="h-auto w-screen max-w-[100vw] object-contain md:mx-auto md:max-h-[65vh] md:w-auto md:max-w-none rounded-lg"
               />
 
-              <p className="mt-4 text-center text-base leading-relaxed text-text-muted md:text-lg">
+              <p className="mt-4 px-4 text-center text-base leading-relaxed text-text-muted md:px-0 md:text-lg">
                 {lightbox.event.description}
               </p>
             </motion.div>
