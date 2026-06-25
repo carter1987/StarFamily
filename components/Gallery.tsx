@@ -188,7 +188,7 @@ export function Gallery({ items }: GalleryProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
             style={{ backgroundColor: "rgba(0,0,0,0.95)" }}
             onClick={close}
             role="dialog"
@@ -252,11 +252,19 @@ export function Gallery({ items }: GalleryProps) {
                   className="mx-auto max-h-[85vh] w-auto rounded-lg object-contain"
                 />
               ) : (
-                <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+                <div
+                  className="relative mx-auto overflow-hidden rounded-lg"
+                  style={{
+                    width: "90vw",
+                    maxWidth: "900px",
+                    height: "70vh",
+                    maxHeight: "506px",
+                  }}
+                >
                   <iframe
                     src={`https://www.youtube.com/embed/${lightboxItem.youtubeId}?autoplay=1`}
                     title={lightboxItem.description}
-                    className="absolute inset-0 h-full w-full border-0"
+                    className="h-full w-full border-0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />

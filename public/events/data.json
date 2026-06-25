@@ -5,20 +5,16 @@
     "title": "Поїздка у Львів",
     "description": "На шляху до Львова ми зупинились у чудовому парку, де з радістю та натхненням провели час разом. А вже на виступі у Львові наші вихованці показали все на що здатні — і зайняли всі призові місця! Пишаємось кожним з них 🌟",
     "photos": [
-      "/events/photos/lviv/foto1.jpeg",
-      "/events/photos/lviv/foto2.jpeg",
-      "/events/photos/lviv/foto3.jpeg",
-      "/events/photos/lviv/foto4.jpeg"
+     
     ]
-  },
+  }, 
   {
-    "id": "Test",
-    "date": "2026-05-10",
-    "title": "Виступ тестова",
-    "description": "Тестовий текст",
+    "id": "Vinnitsya",
+    "date": "2026-06-08",
+    "title": "Змагання",
+    "description": "Наші вихованці взяли участь у змаганнях та показали все на що здатні — і зайняли всі призові місця! Пишаємось кожним з них 🌟",
     "photos": [
-      "/events/photos/test/foto1.jpg",
-      "/events/photos/test/foto2.jpg"
+     
     ]
   }
 ]

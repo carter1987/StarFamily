@@ -24,9 +24,14 @@ export const VINNYTSIA_PRICES: VinnytsiaPriceRow[] = [
   { service: "Абонемент 12 занять/місяць", oldPrice: "3000₴", newPrice: "2500₴" },
   { service: "Абонемент 8 занять/місяць", oldPrice: "2000₴", newPrice: "1800₴" },
   { service: "Абонемент 2 гуртки/місяць", oldPrice: "5000₴", newPrice: "4500₴" },
-  { service: "VIP на місяць — 3 гуртки", oldPrice: "7500₴", newPrice: "6200₴" },
-  { service: "Індивідуальне соло", newPrice: "550₴" },
-  { service: "Індивідуальне дует", newPrice: "800₴" },
+  { service: "Абонемент 3 гуртки/місяць", oldPrice: "7500₴", newPrice: "6200₴" },
+  {
+    service:
+      "VIP на місяць (вільне відвідування занять згідно розкладу та віку дитини кожного дня протягом місяця)",
+    newPrice: "7000₴",
+  },
+  { service: "Індивідуальне заняття соло", newPrice: "550₴" },
+  { service: "Індивідуальне заняття дует", newPrice: "800₴" },
   { service: "Абонемент 8 занять соло", newPrice: "4000₴" },
   { service: "Абонемент 8 занять дует", newPrice: "6000₴" },
 ];
