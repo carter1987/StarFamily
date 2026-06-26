@@ -4,8 +4,72 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { NAV_ITEMS } from "@/lib/constants";
+
+function handleLogoClick(
+  e: MouseEvent<HTMLAnchorElement>,
+  pathname: string,
+  onNavigate: () => void,
+) {
+  e.preventDefault();
+  onNavigate();
+
+  if (pathname === "/") {
+    window.history.replaceState(null, "", "/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+
+  window.location.replace("/");
+}
+
+function scrollToSection(id: string) {
+  document.body.style.overflow = "";
+
+  const run = () => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  requestAnimationFrame(() => {
+    run();
+    requestAnimationFrame(run);
+  });
+}
+
+function handleNavClick(
+  e: MouseEvent<HTMLAnchorElement>,
+  href: string,
+  pathname: string,
+  onNavigate: () => void,
+  deferScroll = false,
+) {
+  onNavigate();
+
+  if (!href.includes("#")) return;
+
+  e.preventDefault();
+
+  const hashIndex = href.indexOf("#");
+  const path = href.slice(0, hashIndex) || "/";
+  const hash = href.slice(hashIndex);
+  const id = hash.slice(1);
+  const targetUrl = `${path}${hash}`;
+
+  if (pathname === path) {
+    window.history.replaceState(null, "", targetUrl);
+    if (id) {
+      if (deferScroll) {
+        window.setTimeout(() => scrollToSection(id), 100);
+      } else {
+        scrollToSection(id);
+      }
+    }
+    return;
+  }
+
+  window.location.replace(targetUrl);
+}
 
 export function Header() {
   const pathname = usePathname();
@@ -38,13 +102,7 @@ export function Header() {
         <Link
           href="/"
           className="shrink-0 bg-transparent"
-          onClick={(e) => {
-            setMenuOpen(false);
-            if (pathname === "/") {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }
-          }}
+          onClick={(e) => handleLogoClick(e, pathname, () => setMenuOpen(false))}
         >
           <Logo priority />
         </Link>
@@ -55,6 +113,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               className="px-3 py-2 text-sm font-medium text-text-muted transition-colors hover:text-gold-light"
+              onClick={(e) => handleNavClick(e, item.href, pathname, () => {}, false)}
             >
               {item.label}
             </Link>
@@ -106,7 +165,9 @@ export function Header() {
                   <Link
                     href={item.href}
                     className="block border-b border-gold/10 py-4 text-base font-medium text-text hover:text-gold-light"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(e) =>
+                      handleNavClick(e, item.href, pathname, () => setMenuOpen(false), true)
+                    }
                   >
                     {item.label}
                   </Link>

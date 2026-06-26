@@ -12,7 +12,7 @@ export function ScrollToTop() {
     if (hash) {
       const id = hash.slice(1);
       requestAnimationFrame(() => {
-        document.getElementById(id)?.scrollIntoView();
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
       return;
     }
