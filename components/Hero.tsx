@@ -20,20 +20,24 @@ function PhoneIcon({ className = "h-5 w-5" }: { className?: string }) {
 }
 
 export function Hero() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [phonesOpen, setPhonesOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!phonesOpen) return;
+    if (!menuOpen) {
+      setPhonesOpen(false);
+      return;
+    }
 
     const onPointerDown = (e: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setPhonesOpen(false);
+        setMenuOpen(false);
       }
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setPhonesOpen(false);
+      if (e.key === "Escape") setMenuOpen(false);
     };
 
     document.addEventListener("mousedown", onPointerDown);
@@ -42,7 +46,9 @@ export function Hero() {
       document.removeEventListener("mousedown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [phonesOpen]);
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <section
@@ -80,15 +86,15 @@ export function Hero() {
         <div ref={containerRef} className="relative mt-10 inline-block">
           <GoldButton
             type="button"
-            aria-expanded={phonesOpen}
+            aria-expanded={menuOpen}
             aria-haspopup="true"
-            onClick={() => setPhonesOpen((open) => !open)}
+            onClick={() => setMenuOpen((open) => !open)}
           >
             Записатись
           </GoldButton>
 
           <AnimatePresence>
-            {phonesOpen && (
+            {menuOpen && (
               <motion.div
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -97,27 +103,57 @@ export function Hero() {
                 className="gold-card absolute left-1/2 top-full z-20 mt-2 w-[min(100vw-2rem,340px)] -translate-x-1/2 overflow-hidden rounded-lg text-left text-[13px] shadow-[0_8px_32px_rgba(0,0,0,0.5)] md:mt-3 md:w-[min(100vw-2rem,360px)] md:text-base"
                 role="menu"
               >
-                <p className="border-b border-gold/30 px-3 py-2 text-center text-[11px] font-medium uppercase tracking-wider text-text-muted md:px-4 md:py-3 md:text-xs">
-                  Оберіть номер
-                </p>
-                {PHONE_CONTACTS.flatMap(({ city, contacts }) =>
-                  contacts.map(({ name, phone }) => (
-                    <a
-                      key={`${city}-${name}-${phone}`}
-                      href={phoneTelHref(phone)}
+                {!phonesOpen ? (
+                  <>
+                    <button
+                      type="button"
                       role="menuitem"
-                      className="flex items-center gap-2 border-b border-gold/20 px-3 py-2.5 transition-colors last:border-b-0 hover:bg-gold/10 md:gap-3 md:px-4 md:py-4"
-                      onClick={() => setPhonesOpen(false)}
+                      className="flex w-full items-center border-b border-gold/20 px-3 py-2.5 text-left transition-colors hover:bg-gold/10 md:px-4 md:py-4"
+                      onClick={() => {
+                        closeMenu();
+                        window.open("https://n1433454.alteg.io", "_blank");
+                      }}
                     >
-                      <PhoneIcon className="h-3.5 w-3.5 md:h-5 md:w-5" />
-                      <span className="flex min-w-0 flex-col gap-0">
-                        <span className="font-semibold leading-tight text-gold-light">
-                          {city}: {name}
-                        </span>
-                        <span className="leading-tight text-text">{phone}</span>
+                      <span className="font-semibold leading-tight text-gold-light">
+                        Записатись онлайн
                       </span>
-                    </a>
-                  )),
+                    </button>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      className="flex w-full items-center px-3 py-2.5 text-left transition-colors hover:bg-gold/10 md:px-4 md:py-4"
+                      onClick={() => setPhonesOpen(true)}
+                    >
+                      <span className="font-semibold leading-tight text-gold-light">
+                        Зателефонувати
+                      </span>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <p className="border-b border-gold/30 px-3 py-2 text-center text-[11px] font-medium uppercase tracking-wider text-text-muted md:px-4 md:py-3 md:text-xs">
+                      Оберіть номер
+                    </p>
+                    {PHONE_CONTACTS.flatMap(({ city, contacts }) =>
+                      contacts.map(({ name, phone }) => (
+                        <a
+                          key={`${city}-${name}-${phone}`}
+                          href={phoneTelHref(phone)}
+                          role="menuitem"
+                          className="flex items-center gap-2 border-b border-gold/20 px-3 py-2.5 transition-colors last:border-b-0 hover:bg-gold/10 md:gap-3 md:px-4 md:py-4"
+                          onClick={closeMenu}
+                        >
+                          <PhoneIcon className="h-3.5 w-3.5 md:h-5 md:w-5" />
+                          <span className="flex min-w-0 flex-col gap-0">
+                            <span className="font-semibold leading-tight text-gold-light">
+                              {city}: {name}
+                            </span>
+                            <span className="leading-tight text-text">{phone}</span>
+                          </span>
+                        </a>
+                      )),
+                    )}
+                  </>
                 )}
               </motion.div>
             )}

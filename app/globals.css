@@ -104,3 +104,33 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.yclients-mobile-widget {
+  display: none !important;
+}
+
+.yclients-widget-button {
+  display: none !important;
+}
+
+[class*="yclients"] {
+  --hide: none;
+}
+
+a.yButton.bottom.right,
+a.yButton {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.yButtonBackground {
+  display: none !important;
+}
+
+.yWidgetCover {
+  display: none !important;
+}

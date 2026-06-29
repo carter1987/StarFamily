@@ -113,6 +113,19 @@ export default function RootLayout({
         />
         <ScrollToTop />
         {children}
+        <Script
+          src="https://w1433454.alteg.io/widgetJS"
+          strategy="afterInteractive"
+          charSet="UTF-8"
+        />
+        <Script id="hide-altegio-float" strategy="afterInteractive">
+          {`
+            window.addEventListener('load', function() {
+              const frames = document.querySelectorAll('iframe');
+              frames.forEach(f => { if(f.src.includes('alteg') || f.src.includes('yclients')) f.style.display='none'; });
+            });
+          `}
+        </Script>
       </body>
     </html>
   );
