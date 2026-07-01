@@ -100,7 +100,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
-                className="gold-card absolute left-1/2 top-full z-20 mt-2 w-[min(100vw-2rem,340px)] -translate-x-1/2 overflow-hidden rounded-lg text-left text-[13px] shadow-[0_8px_32px_rgba(0,0,0,0.5)] md:mt-3 md:w-[min(100vw-2rem,360px)] md:text-base"
+                className="gold-card absolute left-1/2 top-full z-20 mt-2 max-h-[350px] w-[min(100vw-2rem,340px)] -translate-x-1/2 overflow-hidden rounded-lg text-left text-[13px] shadow-[0_8px_32px_rgba(0,0,0,0.5)] md:mt-3"
                 role="menu"
               >
                 {!phonesOpen ? (
@@ -108,7 +108,7 @@ export function Hero() {
                     <button
                       type="button"
                       role="menuitem"
-                      className="flex w-full items-center border-b border-gold/20 px-3 py-2.5 text-left transition-colors hover:bg-gold/10 md:px-4 md:py-4"
+                      className="flex w-full items-center border-b border-gold/20 px-3 py-2.5 text-left transition-colors hover:bg-gold/10"
                       onClick={() => {
                         closeMenu();
                         window.open("https://n1433454.alteg.io", "_blank");
@@ -121,7 +121,7 @@ export function Hero() {
                     <button
                       type="button"
                       role="menuitem"
-                      className="flex w-full items-center px-3 py-2.5 text-left transition-colors hover:bg-gold/10 md:px-4 md:py-4"
+                      className="flex w-full items-center px-3 py-2.5 text-left transition-colors hover:bg-gold/10"
                       onClick={() => setPhonesOpen(true)}
                     >
                       <span className="font-semibold leading-tight text-gold-light">
@@ -131,7 +131,7 @@ export function Hero() {
                   </>
                 ) : (
                   <>
-                    <p className="border-b border-gold/30 px-3 py-2 text-center text-[11px] font-medium uppercase tracking-wider text-text-muted md:px-4 md:py-3 md:text-xs">
+                    <p className="border-b border-gold/30 px-3 py-2 text-center text-[11px] font-medium uppercase tracking-wider text-text-muted">
                       Оберіть номер
                     </p>
                     {PHONE_CONTACTS.flatMap(({ city, contacts }) =>
@@ -140,10 +140,10 @@ export function Hero() {
                           key={`${city}-${name}-${phone}`}
                           href={phoneTelHref(phone)}
                           role="menuitem"
-                          className="flex items-center gap-2 border-b border-gold/20 px-3 py-2.5 transition-colors last:border-b-0 hover:bg-gold/10 md:gap-3 md:px-4 md:py-4"
+                          className="flex items-center gap-2 border-b border-gold/20 px-3 py-2.5 transition-colors last:border-b-0 hover:bg-gold/10"
                           onClick={closeMenu}
                         >
-                          <PhoneIcon className="h-3.5 w-3.5 md:h-5 md:w-5" />
+                          <PhoneIcon className="h-3.5 w-3.5" />
                           <span className="flex min-w-0 flex-col gap-0">
                             <span className="font-semibold leading-tight text-gold-light">
                               {city}: {name}
