@@ -1,0 +1,2 @@
+cd /d D:\Project\starfamily
+npm run dev

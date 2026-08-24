@@ -20,18 +20,21 @@ export const KYIV_PRICES: KyivPriceRow[] = [
 ];
 
 export const VINNYTSIA_PRICES: VinnytsiaPriceRow[] = [
-  { service: "Разове відвідування", newPrice: "250₴" },
-  { service: "Абонемент 12 занять/місяць", oldPrice: "3000₴", newPrice: "2500₴" },
-  { service: "Абонемент 8 занять/місяць", oldPrice: "2000₴", newPrice: "1800₴" },
-  { service: "Абонемент 2 гуртки/місяць", oldPrice: "5000₴", newPrice: "4500₴" },
-  { service: "Абонемент 3 гуртки/місяць", oldPrice: "7500₴", newPrice: "6200₴" },
+  { service: "Разове відвідування", newPrice: "300₴" },
+  { service: "Абонемент 12 занять/місяць", oldPrice: "3600₴", newPrice: "3000₴" },
+  { service: "Абонемент 8 занять/місяць", oldPrice: "2400₴", newPrice: "2200₴" },
+  {
+    service:
+      "Абонемент 2 гуртки/місяць (можна обрати лише 3 види занять на місяць, абонемент не переноситься на інші заняття)",
+    oldPrice: "6000₴",
+    newPrice: "5500₴",
+  },
+  { service: "Абонемент 3 гуртки/місяць", oldPrice: "9000₴", newPrice: "7800₴" },
   {
     service:
       "VIP на місяць (вільне відвідування занять згідно розкладу та віку дитини кожного дня протягом місяця)",
-    newPrice: "7000₴",
+    newPrice: "8800₴",
   },
-  { service: "Індивідуальне заняття соло", newPrice: "550₴" },
-  { service: "Індивідуальне заняття дует", newPrice: "800₴" },
-  { service: "Абонемент 8 занять соло", newPrice: "4000₴" },
-  { service: "Абонемент 8 занять дует", newPrice: "6000₴" },
+  { service: "Індивідуальне заняття", newPrice: "650₴" },
+  { service: "Абонемент індив. заняття", newPrice: "4800₴" },
 ];
