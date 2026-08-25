@@ -75,8 +75,7 @@ export const VINNYTSIA_PRICES: VinnytsiaPriceRow[] = [
   { service: "Абонемент 12 занять/місяць", oldPrice: "3600₴", newPrice: "3000₴" },
   { service: "Абонемент 8 занять/місяць", oldPrice: "2400₴", newPrice: "2200₴" },
   {
-    service:
-      "Абонемент 2 гуртки/місяць (можна обрати лише 3 види занять на місяць, абонемент не переноситься на інші заняття)",
+    service: "Абонемент 2 гуртки/місяць",
     oldPrice: "6000₴",
     newPrice: "5500₴",
   },
