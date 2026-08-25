@@ -1,7 +1,8 @@
-@echo off
+﻿@echo off
+chcp 65001 >nul
 cd /d D:\Project\starfamily
 git add -A
-git commit -m "Оновлення сайту"
+git commit -m "Onovlennya saitu"
 git push
-echo Готово!
+echo Gotovo!
 pause
