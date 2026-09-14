@@ -5,6 +5,19 @@ import type { DaySchedule } from "@/lib/data/schedule";
 
 const CLASS_COLUMNS = ["Клас 1", "Клас 2", "Клас 3", "Клас 4", "Клас 5"];
 
+function renderClassText(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <span key={i} className="text-gold">
+        {part.slice(2, -2)}
+      </span>
+    ) : (
+      part
+    )
+  );
+}
+
 function ScheduleGrid({ schedules }: { schedules: DaySchedule[] }) {
   const [dayId, setDayId] = useState(schedules[0]?.id ?? "");
   const active = schedules.find((s) => s.id === dayId) ?? schedules[0];
@@ -62,7 +75,7 @@ function ScheduleGrid({ schedules }: { schedules: DaySchedule[] }) {
                     key={`${row.time}-${i}`}
                     className="whitespace-nowrap px-3 py-3 text-text md:px-4"
                   >
-                    {cls}
+                    {renderClassText(cls)}
                   </td>
                 ))}
               </tr>
