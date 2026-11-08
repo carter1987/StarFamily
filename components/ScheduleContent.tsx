@@ -3,7 +3,15 @@
 import { useState } from "react";
 import type { DaySchedule } from "@/lib/data/schedule";
 
-const CLASS_COLUMNS = ["Клас 1", "Клас 2", "Клас 3", "Клас 4", "Клас 5"];
+const VINNYTSIA_COLUMNS = ["Клас 1", "Клас 2", "Клас 3", "Клас 4", "Клас 5"];
+const KYIV_COLUMNS = [
+  "Зал 1",
+  "Зал 2",
+  "Зал 3",
+  "Клас вокалу",
+  "Клас творчості",
+  "Клас англійської",
+];
 
 function renderClassText(text: string) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -18,7 +26,13 @@ function renderClassText(text: string) {
   );
 }
 
-function ScheduleGrid({ schedules }: { schedules: DaySchedule[] }) {
+function ScheduleGrid({
+  schedules,
+  columns,
+}: {
+  schedules: DaySchedule[];
+  columns: string[];
+}) {
   const [dayId, setDayId] = useState(schedules[0]?.id ?? "");
   const active = schedules.find((s) => s.id === dayId) ?? schedules[0];
 
@@ -48,13 +62,17 @@ function ScheduleGrid({ schedules }: { schedules: DaySchedule[] }) {
       )}
 
       <div className="gold-card overflow-x-auto rounded-lg">
-        <table className="w-full min-w-[640px] text-left text-sm md:text-base">
+        <table
+          className={`w-full text-left text-sm md:text-base ${
+            columns.length > 5 ? "min-w-[840px]" : "min-w-[640px]"
+          }`}
+        >
           <thead>
             <tr className="border-b border-gold/40 bg-gold/10">
               <th className="whitespace-nowrap px-3 py-4 font-semibold text-gold-light md:px-4">
                 Час
               </th>
-              {CLASS_COLUMNS.map((col) => (
+              {columns.map((col) => (
                 <th
                   key={col}
                   className="whitespace-nowrap px-3 py-4 font-semibold text-gold-light md:px-4"
@@ -124,7 +142,10 @@ export function ScheduleContent({
           </button>
         ))}
       </div>
-      <ScheduleGrid schedules={city === "kyiv" ? kyivSchedules : vinnytsiaSchedules} />
+      <ScheduleGrid
+        schedules={city === "kyiv" ? kyivSchedules : vinnytsiaSchedules}
+        columns={city === "kyiv" ? KYIV_COLUMNS : VINNYTSIA_COLUMNS}
+      />
     </div>
   );
 }
